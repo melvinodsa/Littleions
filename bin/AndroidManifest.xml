@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
         <activity
-            android:name="com.jelouodsa.littleions.MainActivity"
+            android:name="com.jelouodsa.littleions.Game"
             android:screenOrientation="landscape"
             android:label="@string/app_name" >
             <intent-filter>
@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.jelouodsa.littleions.Game"
+            android:name="com.jelouodsa.littleions.MainActivity"
             android:screenOrientation="landscape"
             android:label="@string/app_name" >
             <intent-filter>

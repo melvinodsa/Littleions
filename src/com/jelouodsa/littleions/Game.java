@@ -18,7 +18,7 @@ import android.view.View.OnTouchListener;
 public class Game extends Activity implements OnTouchListener {
 
 	DrawingBall ball;
-	Bitmap monster, blob, heart;
+	Bitmap monster, blob, heart, background;
 	Bitmap trackBall, trackPad;
 	MyView sBall;
 	int x, y;
@@ -36,6 +36,8 @@ public class Game extends Activity implements OnTouchListener {
 				R.drawable.monsters);
 		blob = BitmapFactory.decodeResource(getResources(), R.drawable.image);
 		heart = BitmapFactory.decodeResource(getResources(), R.drawable.life);
+		background = BitmapFactory.decodeResource(getResources(),
+				R.drawable.back);
 		trackBall = BitmapFactory.decodeResource(getResources(),
 				R.drawable.ball);
 		trackPad = BitmapFactory.decodeResource(getResources(),
@@ -46,9 +48,9 @@ public class Game extends Activity implements OnTouchListener {
 		x = 0;
 		y = 0;
 		setContentView(sBall);
-		xt = trackPad.getWidth() / 2 - trackBall.getWidth() / 2 + 5;
+		xt = trackPad.getWidth() / 2 - trackBall.getWidth() / 2 + 35;
 		yt = display.getHeight() - trackPad.getHeight() / 2
-				- trackBall.getHeight() / 2 - 5;
+				- trackBall.getHeight() / 2 - 35;
 		flagis = false;
 
 	}
@@ -88,16 +90,16 @@ public class Game extends Activity implements OnTouchListener {
 		@SuppressLint("WrongCall")
 		protected void onDrawit(Canvas canvas) {
 
-			canvas.drawARGB(255, 0, 0, 255);
+			canvas.drawBitmap(background, 0, 0, new Paint());
 			canvas.drawBitmap(heart, x, y, new Paint());
-			canvas.drawBitmap(trackPad, 20,
-					canvas.getHeight() - trackPad.getHeight() - 20, new Paint());
+			canvas.drawBitmap(trackPad, 50,
+					canvas.getHeight() - trackPad.getHeight() - 50, new Paint());
 			canvas.drawBitmap(trackBall, xt, yt, new Paint());
 			sprite.onDraw(canvas);
 			if (!flagis) {
-				xt = trackPad.getWidth() / 2 - trackBall.getWidth() / 2 + 5;
+				xt = trackPad.getWidth() / 2 - trackBall.getWidth() / 2 + 35;
 				yt = display.getHeight() - trackPad.getHeight() / 2
-						- trackBall.getHeight() / 2 - 5;
+						- trackBall.getHeight() / 2 - 35;
 			}
 			flagis = false;
 		}
@@ -150,86 +152,86 @@ public class Game extends Activity implements OnTouchListener {
 
 	protected void linkXY(Display display, Bitmap trackPad, Bitmap trackBall,
 			MotionEvent event) {
-		if ((event.getY() <= display.getHeight() - trackBall.getHeight() - 20)
+		if ((event.getY() <= display.getHeight() - trackBall.getHeight() - 50)
 				&& (event.getY() >= display.getHeight() - trackPad.getHeight()
-						- 20)
+						- 50)
 				&& (event.getX() <= trackPad.getWidth() - trackBall.getWidth()
-						+ 20) && (event.getX() >= 20)) {
+						+ 50) && (event.getX() >= 50)) {
 			xt = (int) event.getX();
 			yt = (int) event.getY();
 		} else if ((event.getY() > display.getHeight()/* 1 */
-				- trackBall.getHeight() - 20)
+				- trackBall.getHeight() - 50)
 				&& (event.getX() <= trackPad.getWidth() - trackBall.getWidth()
-						+ 20) && (event.getX() >= 20)) {
+						+ 50) && (event.getX() >= 50)) {
 			xt = (int) event.getX();
-			yt = display.getHeight() - trackBall.getHeight() - 20;
-			if ((y < display.getHeight() - heart.getHeight()- 1)) {
-				y+=10;
+			yt = display.getHeight() - trackBall.getHeight() - 50;
+			if ((y < display.getHeight() - heart.getHeight() - 1)) {
+				y += 10;
 			}
 		} else if ((event.getY() <= display.getHeight() - trackBall.getHeight()/* 2 */
-				- 20)
+				- 50)
 				&& (event.getY() >= display.getHeight() - trackPad.getHeight()
-						- 20)
+						- 50)
 				&& (event.getX() > trackPad.getWidth() - trackBall.getWidth()
-						+ 20)) {
+						+ 50)) {
 			yt = (int) event.getY();
-			xt = trackPad.getWidth() - trackBall.getWidth() + 20;
-			if ((x < display.getWidth() - heart.getWidth()- 1)) {
-				x+=10;
+			xt = trackPad.getWidth() - trackBall.getWidth() + 50;
+			if ((x < display.getWidth() - heart.getWidth() - 1)) {
+				x += 10;
 			}
 		} else if ((event.getY() > display.getHeight()/* 3 */
-				- trackBall.getHeight() - 20)
+				- trackBall.getHeight() - 50)
 				&& (event.getX() > trackPad.getWidth() - trackBall.getWidth()
-						+ 20)) {
-			yt = display.getHeight() - trackBall.getHeight() - 20;
-			xt = trackPad.getWidth() - trackBall.getWidth() + 20;
+						+ 50)) {
+			yt = display.getHeight() - trackBall.getHeight() - 50;
+			xt = trackPad.getWidth() - trackBall.getWidth() + 50;
 			if ((x < display.getWidth() - heart.getWidth() - 1)
 					&& (y < display.getHeight() - heart.getHeight() - 1)) {
-				x+=10;
-				y+=10;
+				x += 10;
+				y += 10;
 			}
 		} else if ((event.getY() < display.getHeight()/* 4 */
-				- trackPad.getHeight() - 20)
+				- trackPad.getHeight() - 50)
 				&& (event.getX() > trackPad.getWidth() - trackBall.getWidth()
-						+ 20)) {
-			yt = display.getHeight() - trackPad.getHeight() - 20;
-			xt = trackPad.getWidth() - trackBall.getWidth() + 10;
+						+ 50)) {
+			yt = display.getHeight() - trackPad.getHeight() - 50;
+			xt = trackPad.getWidth() - trackBall.getWidth() + 50;
 			if ((x < display.getWidth() - heart.getWidth() - 1) && (y > 1)) {
-				x+=10;
-				y-=10;
+				x += 10;
+				y -= 10;
 			}
 		} else if ((event.getY() < display.getHeight()/* 5 */
-				- trackPad.getHeight() - 20)
+				- trackPad.getHeight() - 50)
 				&& (event.getX() <= trackPad.getWidth() - trackBall.getWidth()
-						+ 20) && (event.getX() >= 20)) {
+						+ 50) && (event.getX() >= 50)) {
 			xt = (int) event.getX();
-			yt = display.getHeight() - trackPad.getHeight() - 20;
+			yt = display.getHeight() - trackPad.getHeight() - 50;
 			if (y > 1) {
-				y-=10;
+				y -= 10;
 			}
 		} else if ((event.getY() <= display.getHeight() - trackBall.getHeight()/* 6 */
-				- 20)
+				- 50)
 				&& (event.getY() >= display.getHeight() - trackPad.getHeight()
-						- 20) && (event.getX() < 20)) {
+						- 50) && (event.getX() < 50)) {
 			yt = (int) event.getY();
-			xt = 20;
+			xt = 50;
 			if (x > 1) {
-				x-=10;
+				x -= 10;
 			}
 		} else if ((event.getY() < display.getHeight()/* 7 */
-				- trackPad.getHeight() - 20) && (event.getX() < 20)) {
-			yt = display.getHeight() - trackPad.getHeight() - 20;
-			xt = 20;
+				- trackPad.getHeight() - 50) && (event.getX() < 50)) {
+			yt = display.getHeight() - trackPad.getHeight() - 50;
+			xt = 50;
 			if (x > 1 && y > 1) {
-				x-=10;
-				y-=10;
+				x -= 10;
+				y -= 10;
 			}
 		} else {
-			yt = display.getHeight() - trackBall.getHeight() - 20;
-			xt = 20;
+			yt = display.getHeight() - trackBall.getHeight() - 50;
+			xt = 50;
 			if (x > 1 && (y < display.getHeight() - heart.getHeight() - 1)) {
 				x--;
-				y+=10;
+				y += 10;
 			}
 		}
 

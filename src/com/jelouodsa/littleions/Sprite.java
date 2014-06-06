@@ -16,7 +16,7 @@ public class Sprite {
 	int heightm, widthm;
 	Bitmap b, m;
 	MyView mv;
-	int direction = 2;
+	int direction = 3;
 	int currentFrame = 0;
 	int currentFrameM = 0;
 	int directionM = 0;
@@ -25,7 +25,7 @@ public class Sprite {
 		b = blob;
 		m = monster;
 		mv = myView;
-		width = b.getWidth() / 3;
+		width = b.getWidth() / 9;
 		height = b.getHeight() / 4;
 		widthm = m.getWidth() / 3;
 		heightm = m.getHeight() / 2;
@@ -72,7 +72,7 @@ public class Sprite {
 		if (x > mv.getWidth() - width - xSpeed) {
 			xSpeed = 0;
 			ySpeed = 5;
-			direction = 0;
+			direction = 2;
 		}
 		if (y > mv.getHeight() - height - ySpeed) {
 			xSpeed = -5;
@@ -83,16 +83,16 @@ public class Sprite {
 			x = 0;
 			xSpeed = 0;
 			ySpeed = -5;
-			direction = 3;
+			direction = 0;
 		}
 		if (y + ySpeed < 0) {
 			y = 0;
 			xSpeed = 5;
 			ySpeed = 0;
-			direction = 2;
+			direction = 3;
 		}
 
-		currentFrame = ++currentFrame % 3;
+		currentFrame = ++currentFrame % 9;
 		currentFrameM = ++currentFrameM % 3;
 		ym += ySpeedM;
 		x += xSpeed;
