@@ -9,6 +9,6 @@ Littleions is a game based on taking the heart without getting attacked by the '
 
 Littleions are :-
 
-<img src="https://raw.github.com/Melvinodsa/Littleions/master/res/drawable/monsters.png">
+<img src="https://raw.github.com/Melvinodsa/Littleions/master/assets/Characters/monsters.png">
 
-<img src="https://raw.github.com/Melvinodsa/Littleions/master/res/drawable/image.png">
+<img src="https://raw.github.com/Melvinodsa/Littleions/master/assets/Characters/man.png">
