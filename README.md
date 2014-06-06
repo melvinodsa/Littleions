@@ -7,3 +7,6 @@
 
 Littleions is a game based on reaching the goal without getting attacked by the 'Litlleions'.
 
+Littleions are :-
+
+<img src="https://raw.github.com/Melvinodsa/Littleions/master/res/drawable/monsters.png">
